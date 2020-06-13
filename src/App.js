@@ -12,6 +12,7 @@ const App =()=> {
   const [counter, setCounter] = useState(0);
 
   useEffect(()=>{
+    getRecipes();
   }, []);
 
   const getRecipes = async () =>{
