@@ -27,27 +27,34 @@ const App =()=> {
   }
   const getSearch = e =>{
     e.preventDefault();
-    setQuery(search)
+    setQuery(search);
+    setSearch('');
 
-  }
+  };
 
   return (
     <div className="App">
       <form onSubmit = {getSearch} className ="search-form">
         <input className="search-bar" type="text" value ={search} onChange ={updateSearch}/>
-        <button  className ="search-botton" type="submit">
+        <button  className ="search-button" type="submit">
           Search
+          </button>
+          <button  className ="search-button" type="submit">
+          Creacte your Recipe
           </button>
  
       </form>
+      <div className ="recipes">
       {recipes.map(recipe =>(
         <Recipe 
         key = {recipe.recipe.label}
         title ={recipe.recipe.label} 
         calories ={recipe.recipe.calories}
         image={recipe.recipe.image}
+        ingredients ={recipe.recipe.ingredients}
         />
       ))}
+      </div>
     </div>
   );
 }
