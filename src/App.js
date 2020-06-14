@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Recipe from './Recipe';
+import Recipe from './Recipe.js';
 import './App.css';
 
 const App =()=> {
@@ -8,25 +8,26 @@ const App =()=> {
   const APP_KEY = "c2bd663000e60f666031d5b8c0c8eb8d";
 
   const [recipes, setRecipes] = useState([]);
-  const [search , setSearch ] = useState('');
-  const [query, setQuery] = useState ('chicken');
+  const [search , setSearch ] = useState("");
+  const [query, setQuery] = useState("chicken");
 
   useEffect(()=>{
     getRecipes();
   }, [query]);
+  
 
   const getRecipes = async () =>{
     const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
     const data = await response.json();
     setRecipes(data.hits);
-    console.log(data.hits);
+    
   }
   const updateSearch = e =>{
     setSearch(e.target.value);
     
-  }
+  };
   const getSearch = e =>{
-    e.preventDefault();
+    e.preventDefault() ;
     setQuery(search);
     setSearch('');
 
